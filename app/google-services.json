@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "859244785778",
+    "project_id": "planauth-73184",
+    "storage_bucket": "planauth-73184.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:859244785778:android:e849ae35c77b600d6d12eb",
+        "android_client_info": {
+          "package_name": "com.example.plangenie"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "859244785778-e1v52s3dneno27ls9qdq4n50q1uj9t8m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCo7oZx2Q2GCl2KdEk4BDTMUqwX0to3oZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "859244785778-e1v52s3dneno27ls9qdq4n50q1uj9t8m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
