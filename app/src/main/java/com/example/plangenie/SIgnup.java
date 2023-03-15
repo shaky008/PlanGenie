@@ -94,7 +94,7 @@ public class SIgnup extends AppCompatActivity {
             return;
         }
 
-        //if password's lengt is less than 6, give error
+        //if password's length is less than 6, give error
         if(passwordS.length() < 6)
         {
             password.setError("password should be more than 6 characters!");
