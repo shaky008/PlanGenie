@@ -6,4 +6,8 @@
     <string name="e_mail">E-mail</string>
     <string name="password">password</string>
     <string name="new_register_a_new_account">New?Register a new account</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="confirm">Confirm</string>
+    <string name="reset_your_password">Reset your password</string>
+    <string name="go_back">Go back</string>
 </resources>

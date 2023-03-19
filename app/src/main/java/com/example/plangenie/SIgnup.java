@@ -10,8 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +25,7 @@ public class SIgnup extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private TextView goBack;
     private EditText fullName,email, password;
     private Button signupBtn;
 
@@ -41,6 +41,7 @@ public class SIgnup extends AppCompatActivity {
         email = findViewById(R.id.signupEmail);
         password = findViewById(R.id.signupPassword);
         signupBtn = findViewById(R.id.signupButton);
+        goBack = findViewById(R.id.go_back);
 
         //condition to signup an account when pressing the signup button
         signupBtn.setOnClickListener(new View.OnClickListener() {
@@ -51,10 +52,24 @@ public class SIgnup extends AppCompatActivity {
 
             }
         });
+
+        //takes you back to login page when pressed
+        goBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                goBackToLoginPage();
+            }
+        });
+
+    }
+
+    //takes back to login page
+    private void goBackToLoginPage() {
+        startActivity(new Intent(this, LoginPage.class));
     }
 
     //condition for validSignup
-    public void validSignup()
+     public void validSignup()
     {
         //read txt from EditText
         String nameFull,emailS, passwordS;
@@ -62,7 +77,7 @@ public class SIgnup extends AppCompatActivity {
         emailS = email.getText().toString().trim();
         passwordS = password.getText().toString().trim();
 
-        //if fullname editText is empty, give error
+        //if fullName editText is empty, give error
         if (TextUtils.isEmpty(nameFull))
         {
             fullName.setError("Please enter your Name");
@@ -98,6 +113,8 @@ public class SIgnup extends AppCompatActivity {
         if(passwordS.length() < 6)
         {
             password.setError("password should be more than 6 characters!");
+            password.requestFocus();
+            return;
         }
 
         //Create a new account by passing the new user's email address and password to createUserWithEmailAndPassword
@@ -115,7 +132,7 @@ public class SIgnup extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful())
                                             {
-                                                Toast.makeText(SIgnup.this, "User sucessfully created an account", Toast.LENGTH_SHORT).show();
+                                                Toast.makeText(SIgnup.this, "User successfully created an account", Toast.LENGTH_SHORT).show();
                                             } else {
                                                 Toast.makeText(SIgnup.this, "Failed to signup. Please try again",
                                                         Toast.LENGTH_SHORT).show();
@@ -129,7 +146,8 @@ public class SIgnup extends AppCompatActivity {
                         }
                     }
                 });
-        startActivity(new Intent(this, LoginPage.class));
+        //takes back to login page if signed up successfully
+//        startActivity(new Intent(this, LoginPage.class));
 
     }
 }
