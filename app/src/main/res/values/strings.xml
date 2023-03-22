@@ -10,4 +10,5 @@
     <string name="confirm">Confirm</string>
     <string name="reset_your_password">Reset your password</string>
     <string name="go_back">Go back</string>
+    <string name="create_an_event">+ Create an Event</string>
 </resources>
