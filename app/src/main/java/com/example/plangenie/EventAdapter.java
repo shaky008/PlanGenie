@@ -37,14 +37,18 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.title.setText(modelEvent.getTitle());
         holder.date.setText(modelEvent.getDate());
 
-        holder.cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                context = v.getContext();
-                Intent i = new Intent(context, DetailEventActivity.class);
-                i.putExtra("event_name", arrayList);
-            }
-        });
+//        holder.cardView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                context = v.getContext();
+//                Intent i = new Intent(context, DetailEventActivity.class);
+//                i.putExtra("event_name", arrayList.get(holder.getAdapterPosition()).getTitle());
+//                i.putExtra("event_date", arrayList.get(holder.getAdapterPosition()).getDate());
+//                i.putExtra("event_time", arrayList.get(holder.getAdapterPosition()).getTime());
+//                context.startActivity(i);
+//
+//            }
+//        });
     }
 
     @Override

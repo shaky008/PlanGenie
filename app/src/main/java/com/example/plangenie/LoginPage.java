@@ -41,7 +41,8 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
         signup = findViewById(R.id.loginSignUp);
         loginBtn = findViewById(R.id.LoginButton);
         forgotPassword = findViewById(R.id.loginForgotPassword);
-
+        loginEmail.setText("sam@gmail.com");
+        loginPassword.setText("123456");
         //opens signup activity
         signup.setOnClickListener(this);
 

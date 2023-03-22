@@ -1,77 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/oceanBlue"
-    tools:context=".DetailEventActivity"
-    android:orientation="vertical"
-    >
+    tools:context=".DetailEventActivity">
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view_DetailEvent"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="118dp"
-        app:cardCornerRadius="10dp"
-        app:cardBackgroundColor="@color/skyBlue"
-        app:cardUseCompatPadding="true"
-        tools:layout_editor_absoluteX="112dp"
-        tools:layout_editor_absoluteY="69dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-                <EditText
-                    android:id="@+id/EventTopicTextViewDetailEvent"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_DetailEvent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/skyBlue"
+            app:cardUseCompatPadding="true"
+            tools:layout_editor_absoluteX="112dp"
+            tools:layout_editor_absoluteY="69dp">
+
+            <EditText
+                android:id="@+id/EventTopicTextViewDetailEvent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter Your Event" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="10dp"
+            app:cardBackgroundColor="@color/skyBlue"
+            app:cardUseCompatPadding="true"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="4dp"
+            app:cardCornerRadius="8dp"
+            app:cardUseCompatPadding="true"
+            app:contentPadding="16dp"
+            app:cardBackgroundColor="@color/skyBlue">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <Switch
+                    android:id="@+id/switch_button"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:hint="Enter Your Event"/>
-    </androidx.cardview.widget.CardView>
+                    android:layout_height="wrap_content"
+                    android:text="Show Calendar"/>
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view_date"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="10dp"
-        app:cardBackgroundColor="@color/skyBlue"
-        app:cardUseCompatPadding="true"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="300dp"/>
+                <CalendarView
+                    android:id="@+id/calendar_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="318dp"
+                    android:visibility="visible" />
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardElevation="4dp"
-        app:cardCornerRadius="8dp"
-        app:cardUseCompatPadding="true"
-        app:contentPadding="16dp"
-        app:cardBackgroundColor="@color/skyBlue">
+                <TimePicker
+                    android:layout_width="381dp"
+                    android:layout_height="139dp"
+                    android:timePickerMode="spinner"></TimePicker>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+        
+<!--        <androidx.cardview.widget.CardView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:cardCornerRadius="10dp"-->
+<!--            app:cardBackgroundColor="@color/skyBlue"-->
+<!--            app:cardUseCompatPadding="true"-->
+<!--            >-->
+<!--            <Switch-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Reminder"/>-->
+<!--            -->
+<!--        </androidx.cardview.widget.CardView>-->
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-            <Switch
-                android:id="@+id/switch_button"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/cancel_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Show Calendar"/>
+                android:text="@string/cancel"
+                android:layout_weight="1"
+                android:layout_gravity="bottom|left"
+                ></Button>
 
-            <CalendarView
-                android:id="@+id/calendar_view"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/create_button"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:visibility="visible"/>
-
-            <TimePicker
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:timePickerMode="spinner"
-                ></TimePicker>
-
+                android:text="@string/create"
+                android:layout_weight="1"
+                android:layout_gravity="bottom|right" />
         </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
-
-
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
