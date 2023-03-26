@@ -17,8 +17,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.regex.Pattern;
-
 //Login class that lets user use the app only if they have signed up and created an account
 
 public class LoginPage extends AppCompatActivity implements View.OnClickListener {
@@ -51,8 +49,6 @@ public class LoginPage extends AppCompatActivity implements View.OnClickListener
 
         //opens forgot password activity
         forgotPassword.setOnClickListener(this);
-
-
 
     }
 

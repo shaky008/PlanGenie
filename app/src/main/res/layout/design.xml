@@ -24,10 +24,22 @@
             android:id="@+id/timeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:layout_marginLeft="335dp"
             android:hint="2:30PM"
             android:textSize="15sp"></TextView>
+
+        <TextView
+            android:id="@+id/dateTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginLeft="335dp"
+            android:layout_gravity="bottom"
+            android:hint="March 25"
+            android:textSize="15sp"></TextView>
+
+
 
     </androidx.cardview.widget.CardView>
 

@@ -81,44 +81,12 @@ Button createEventBtn;
                 super.onPageScrollStateChanged(state);
             }
         });
-
-
-//        recyclerView = findViewById(R.id.recyclerView);
-//        createEventBtn = findViewById(R.id.createEvent_btn);
-//
-//        arrayList.add(new ModelEvent("Doctors appointment", "25th march", "2:00PM" ));
-//        arrayList.add(new ModelEvent("Doctors appointment", "25th march", "2:00PM" ));
-//        arrayList.add(new ModelEvent("Doctors appointment", "25th march", "2:00PM" ));
-//        arrayList.add(new ModelEvent("Doctors appointment", "25th march", "2:00PM" ));
-//        arrayList.add(new ModelEvent("Doctors appointment", "25th march", "2:00PM" ));
-//        arrayList.add(new ModelEvent("Doctors appointment", "25th march", "2:00PM" ));
-//        arrayList.add(new ModelEvent("Doctors appointment", "25th march", "2:00PM" ));
-//        arrayList.add(new ModelEvent("Doctors appointment", "25th march", "2:00PM" ));
-//        arrayList.add(new ModelEvent("Doctors appointment", "25th march", "2:00PM" ));
-//        arrayList.add(new ModelEvent("Doctors appointment", "25th march", "2:00PM" ));
-//
-//
-//        EventAdapter adapter = new EventAdapter(this, arrayList);
-//        recyclerView.setAdapter(adapter);
-//
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
-//        recyclerView.setLayoutManager(linearLayoutManager);
-//
-//        createEvent();
-
-
-
     }
 
-    //jumps to DetailEventActivity where user can create an Event
-//    public void createEvent()
-//    {
-//        createEventBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(MainActivity.this, DetailEventActivity.class);
-//                startActivity(i);
-//            }
-//        });
-//    }
+    public void onBackPressed()
+    {
+        finish();
+        //makes user to exit from the app
+        super.onBackPressed();
+    }
 }
