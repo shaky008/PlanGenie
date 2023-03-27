@@ -2,9 +2,9 @@ package com.example.plangenie;
 
 public class ModelEvent
 {
-    private String title;
-    private String date;
-    private String time;
+    private String eventTopic;
+    private String eventDate;
+    private String eventTime;
 
     //default constructor
     public ModelEvent()
@@ -13,35 +13,36 @@ public class ModelEvent
     }
 
     //parametized constructor
-    public ModelEvent(String newTitle, String newDate, String newTime)
+    public ModelEvent(String newDate, String newTime, String newTitle)
     {
-        this.title = newTitle;
-        this.date = newDate;
-        this.time = newTime;
+        this.eventDate = newDate;
+        this.eventTime = newTime;
+        this.eventTopic = newTitle;
+
     }
 
     //getters and setters
-    public String getTitle() {
-        return title;
+    public String getEventTopic() {
+        return eventTopic;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setEventTopic(String eventTopic) {
+        this.eventTopic = eventTopic;
     }
 
-    public String getDate() {
-        return date;
+    public String getEventDate() {
+        return eventDate;
     }
 
-    public void setDate(String date) {
-        this.date = date;
+    public void setEventDate(String eventDate) {
+        this.eventDate = eventDate;
     }
 
-    public String getTime() {
-        return time;
+    public String getEventTime() {
+        return eventTime;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setEventTime(String eventTime) {
+        this.eventTime = eventTime;
     }
 }

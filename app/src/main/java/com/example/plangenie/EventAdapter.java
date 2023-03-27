@@ -1,14 +1,12 @@
 package com.example.plangenie;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -34,8 +32,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     @Override
     public void onBindViewHolder(@NonNull EventAdapter.MyViewHolder holder, int position) {
         ModelEvent modelEvent = arrayList.get(position);
-        holder.title.setText(modelEvent.getTitle());
-        holder.date.setText(modelEvent.getDate());
+        holder.title.setText(modelEvent.getEventTopic());
+        holder.date.setText(modelEvent.getEventDate());
+        holder.time.setText(modelEvent.getEventTime());
 
 //        holder.cardView.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -58,15 +57,16 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView title, date;
-        CardView cardView;
+        TextView title, date, time;
+//        CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            cardView = itemView.findViewById(R.id.card_view);
+//            cardView = itemView.findViewById(R.id.card_view);
             title = itemView.findViewById(R.id.eventTitleTextView);
-            date= itemView.findViewById(R.id.timeTextView);
+            date= itemView.findViewById(R.id.dateTextView);
+            time = itemView.findViewById(R.id.timeTextView);
         }
     }
 }

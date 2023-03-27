@@ -8,7 +8,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
+        android:layout_height="100dp"
         app:cardBackgroundColor="@color/skyBlue"
         app:cardCornerRadius="10dp"
         app:cardUseCompatPadding="true">
@@ -17,27 +17,31 @@
             android:id="@+id/eventTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textStyle="bold"
             android:hint="Doctor appointment"
-            android:textSize="20sp"></TextView>
+            android:textSize="25sp"></TextView>
 
         <TextView
             android:id="@+id/timeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginLeft="335dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginTop="10dp"
             android:hint="2:30PM"
-            android:textSize="15sp"></TextView>
+            android:textSize="20sp"></TextView>
 
         <TextView
             android:id="@+id/dateTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_marginLeft="335dp"
+            android:layout_marginLeft="300dp"
+            android:layout_marginBottom="10dp"
             android:layout_gravity="bottom"
             android:hint="March 25"
-            android:textSize="15sp"></TextView>
+            android:textSize="20sp"></TextView>
 
 
 
