@@ -104,7 +104,8 @@ public class DetailEventActivity extends AppCompatActivity {
 //                                calendar.set(Calendar.YEAR, year);
 //                                calendar.set(Calendar.MONTH, month);
 //                                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-//                                selectedDate = calendar.getTime();
+//                                Date selectedDate1 = calendar.getTime();
+//                                selectedDate = String.valueOf(selectedDate1);
                                 selectedDate = dayOfMonth + "/" + month + "/" + year;
 
                                 timePickerView.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {
@@ -161,6 +162,12 @@ public class DetailEventActivity extends AppCompatActivity {
             eventData.put("eventTime", selectedTime);
         }
         eventRef.setValue(eventData);
+    }
+
+    //sets reminder for the selected date
+    private void setReminder()
+    {
+
     }
 
     //Takes you back to homepage

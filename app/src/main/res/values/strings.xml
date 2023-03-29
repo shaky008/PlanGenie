@@ -17,4 +17,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="enter_your_event">Enter Your Event</string>
     <string name="show_calendar">Show Calendar</string>
+    <string name="delete">delete</string>
+    <string name="complete">complete</string>
 </resources>

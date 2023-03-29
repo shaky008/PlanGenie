@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -36,18 +37,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.date.setText(modelEvent.getEventDate());
         holder.time.setText(modelEvent.getEventTime());
 
-//        holder.cardView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                context = v.getContext();
-//                Intent i = new Intent(context, DetailEventActivity.class);
-//                i.putExtra("event_name", arrayList.get(holder.getAdapterPosition()).getTitle());
-//                i.putExtra("event_date", arrayList.get(holder.getAdapterPosition()).getDate());
-//                i.putExtra("event_time", arrayList.get(holder.getAdapterPosition()).getTime());
-//                context.startActivity(i);
-//
-//            }
-//        });
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                context = v.getContext();
+
+            }
+        });
     }
 
     @Override
@@ -58,12 +54,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView title, date, time;
-//        CardView cardView;
+        CardView cardView;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
-//            cardView = itemView.findViewById(R.id.card_view);
+            cardView = itemView.findViewById(R.id.card_view);
             title = itemView.findViewById(R.id.eventTitleTextView);
             date= itemView.findViewById(R.id.dateTextView);
             time = itemView.findViewById(R.id.timeTextView);
