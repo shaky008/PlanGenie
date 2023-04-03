@@ -1,8 +1,8 @@
 package com.example.plangenie;
-
+//class to store full name and email of the user
 public class User {
 
-    public String fullName, email;
+    private String fullName, email;
 
     //default constructor
     public User()
@@ -17,5 +17,19 @@ public class User {
         this.email = newEmail;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
 
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }

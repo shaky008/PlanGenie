@@ -36,13 +36,22 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
     Context context;
     ArrayList<ModelEvent> arrayList;
 
-    private FirebaseAuth auth;
-    private DatabaseReference databaseReference;
-    private String userId;
+
+    private OnclickListener onClickListener;
+
+    public void setOnClickListener(OnclickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
 
     public EventAdapter(Context context, ArrayList<ModelEvent> arrayList) {
         this.context = context;
         this.arrayList = arrayList;
+    }
+
+    public void setData(ArrayList<ModelEvent> newData) {
+        this.arrayList.clear();
+        arrayList.addAll(newData);
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -60,11 +69,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         holder.date.setText(modelEvent.getEventDate());
         holder.time.setText(modelEvent.getEventTime());
 
-                //opens a dialog box when clicked on each recycleVIew cardView
+        //opens a dialog box when clicked on each recycleVIew cardView
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dialogMenu(holder.getAdapterPosition());
+
+                if (onClickListener != null)
+                {
+                    onClickListener.onClick(holder.getAdapterPosition(), modelEvent);
+                }
             }
         });
     }
@@ -90,93 +103,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.MyViewHolder
         }
     }
 
-    public void dialogMenu(int position)
+    public interface OnclickListener
     {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("The Event");
-        builder.setMessage("What would you like to do with it?");
-        builder.setCancelable(true);
-
-        auth = FirebaseAuth.getInstance();
-        //gets the id of the current user
-        userId = auth.getCurrentUser().getUid();
-        databaseReference = FirebaseDatabase.getInstance().getReference().child("Users").child(userId);
-
-        //creates a new node called events for the user and get a reference to it
-        DatabaseReference eventRef = databaseReference.child("completed").push();
-
-        //create a map to store the event data
-        Map<String, Object> eventData = new HashMap<>();
-
-
-//        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for (DataSnapshot eventSnapshot : snapshot.getChildren())
-//                {
-//                    eventId = eventSnapshot.getKey();
-//                    System.out.println("----------------------------" + eventId + "----------------------------");
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
-
-
-        //sends the selected event inside events node to a new node called completed and deletes from the events node in firebase database
-        builder.setPositiveButton("COMPLETE", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                eventData.put("eventTopic", arrayList.get(position).getEventTopic());
-                if ( arrayList.get(position).getEventDate() != null)
-                {
-                    eventData.put("eventDate", arrayList.get(position).getEventDate());
-                }
-                if (arrayList.get(position).getEventTime() != null)
-                {
-                    eventData.put("eventTime", arrayList.get(position).getEventTime());
-                }
-                eventRef.setValue(eventData);
-            }
-        });
-
-        //deletes the selected event from the events node in firebase database
-        builder.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-
-                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-                Query applesQuery = ref.child("Users").child(userId).child("events").orderByChild("eventTopic").equalTo(arrayList.get(position).getEventTopic());
-
-                ArrayList arrayList1 = new ArrayList<>(arrayList);
-                arrayList.clear();
-                arrayList.addAll(arrayList1);
-                notifyDataSetChanged();
-
-                applesQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        for (DataSnapshot appleSnapshot: dataSnapshot.getChildren()) {
-                            appleSnapshot.getRef().removeValue();
-                        }
-                    }
-
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        Log.e(TAG, "onCancelled", databaseError.toException());
-                    }
-                });
-
-
-            }
-        });
-
-
-        builder.create().show();
-
+        void onClick(int position, ModelEvent modelEvent);
     }
 }
