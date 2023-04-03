@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <application
@@ -17,13 +16,19 @@
         android:theme="@style/Theme.PlanGenie"
         tools:targetApi="31">
         <activity
+            android:name=".DialogBox"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".DetailEventActivity"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-
         <activity
             android:name=".ForgetPassword"
             android:exported="false">
@@ -59,7 +64,7 @@
                 android:value="" />
         </activity>
 
-        <receiver android:name=".ReminderBroadCast"/>
+        <receiver android:name=".ReminderBroadCast" />
     </application>
 
 </manifest>

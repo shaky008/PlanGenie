@@ -30,7 +30,7 @@ public class ReminderBroadCast extends BroadcastReceiver
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //get data from snapshot
+                //get data   from snapshot
                 String title = snapshot.child("eventTopic").getValue(String.class);
 
                 getNotification(title);
@@ -43,6 +43,9 @@ public class ReminderBroadCast extends BroadcastReceiver
 
             private void getNotification(String title)
             {
+                Intent i = new Intent(context, MainActivity.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
                 NotificationCompat.Builder builder = new NotificationCompat.Builder(context, "notifyMe")
                         .setSmallIcon(R.drawable.plange)
                         .setContentTitle(title)

@@ -3,6 +3,8 @@ package com.example.plangenie;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -26,13 +28,18 @@ import java.util.Map;
 public class DetailEventActivity extends AppCompatActivity {
 
     private EditText eventTopicEditText;
-    private Switch showCalenderSwitch;
+    private Switch showCalenderSwitch, setReminderFSwitch;
     private CalendarView calendarView;
     private TimePicker timePickerView;
     private Button cancelBtn, createBtn;
 
+    final static int req1=1;
+    public String a = "0";
+    Date selectedDate1;
     private String selectedDate;
     private String selectedTime;
+    Calendar calendar = Calendar.getInstance();
+
 
     private DatabaseReference eventsDatabaseReference;
     private FirebaseAuth firebaseAuth;
@@ -49,6 +56,8 @@ public class DetailEventActivity extends AppCompatActivity {
         cancelBtn = findViewById(R.id.cancel_button);
         createBtn = findViewById(R.id.create_button);
         calendarView.setVisibility(View.GONE);
+        setReminderFSwitch = findViewById(R.id.reminderSwitch);
+
 
 
         //get reference to Users node in the database
@@ -95,16 +104,16 @@ public class DetailEventActivity extends AppCompatActivity {
                 String eventTopic = eventTopicEditText.getText().toString().trim();     //stores string retrieved from editText
                 if (!eventTopic.isEmpty())
                 {
+                    //if calender is switched on, show both time and date
                     if (showCalenderSwitch.isChecked())
                     {
-                        Calendar calendar = Calendar.getInstance();
                         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
                             @Override
                             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
 //                                calendar.set(Calendar.YEAR, year);
 //                                calendar.set(Calendar.MONTH, month);
 //                                calendar.set(Calendar.DAY_OF_MONTH,dayOfMonth);
-//                                Date selectedDate1 = calendar.getTime();
+//                                selectedDate1 = calendar.getTime();
 //                                selectedDate = String.valueOf(selectedDate1);
                                 selectedDate = dayOfMonth + "/" + month + "/" + year;
 
@@ -116,7 +125,8 @@ public class DetailEventActivity extends AppCompatActivity {
                                 });
                             }
                         });
-                        //save event data to the database if both time and date is selcted
+
+                        //save event data to the database if both time and date is selected
                         if (selectedDate != null && selectedTime != null)
                         {
                             //save event data to the database
@@ -165,10 +175,22 @@ public class DetailEventActivity extends AppCompatActivity {
     }
 
     //sets reminder for the selected date
-    private void setReminder()
-    {
-
-    }
+//    private void setReminder(Calendar target)
+//    {
+//        if (setReminderFSwitch.isChecked())
+//        {
+//
+//            Toast.makeText(this, "Reminder is set on", Toast.LENGTH_SHORT).show();
+//            Intent i = new Intent(DetailEventActivity.this, ReminderBroadCast.class);
+//            PendingIntent pendingIntent = PendingIntent.getBroadcast(DetailEventActivity.this, req1, i, 0);
+//
+//            AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+//            alarmManager.set(AlarmManager.RTC_WAKEUP, target.getTimeInMillis(), pendingIntent);
+//            a = "1";
+//
+////            calendar.set(selectedDate1);
+//        }
+//    }
 
     //Takes you back to homepage
     public void cancel()

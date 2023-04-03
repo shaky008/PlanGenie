@@ -26,12 +26,13 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment
+{
 
-    RecyclerView recyclerView;
-    EventAdapter eventAdapter;
-    ArrayList<ModelEvent> arrayList;
-    Button createEventBtn;
+    private RecyclerView recyclerView;
+    private EventAdapter eventAdapter;
+    private ArrayList<ModelEvent> arrayList;
+    private Button createEventBtn;
 
     private DatabaseReference databaseReference;
     private FirebaseDatabase firebaseDatabase;
@@ -85,7 +86,6 @@ public class HomeFragment extends Fragment {
         });
 
         createEvent();
-
         return view;
     }
 
